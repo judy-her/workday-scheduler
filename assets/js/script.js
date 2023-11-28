@@ -23,5 +23,31 @@ $(function () {
   // TODO: Add code to display the current date in the header of the page.
 });
 
-var currentDay = dayjs('2023-12-23');
-$('#currentDay').text(currentDay.format('dddd, MMMM DD'));
+var currentDay = dayjs();
+$('#currentDay').text(currentDay.format('dddd, MMMM DD, YYYY hh:mm a'));
+
+var hour = dayjs();
+var currentHour = $('#currentHour').text(hour.hour()); //hour method gets current hour
+var hour2 = hour.hour();
+console.log(hour2); //this gives me hour as number yay!
+
+console.log(stringCurrentHour);
+
+var scheduledHour = $('.time-block');
+
+if (scheduledHour > 13) {
+  $('.time-block').addClass('future');
+} else if (scheduledHour < 13) {
+  $('.time-block').addClass('past');
+} else if (scheduledHour == 13) {
+  $('.time-block').addClass('present');
+}
+
+// console.log(idHour);
+// if (idHour && parseInt(idHour.textContent) > 13) {
+//   // Add the 'future' class to elements with class 'time-block'
+//   $('.time-block').addClass('future');
+// }
+// if (idHour > 13) {
+//   $('.time-block').addClass('future');
+// }
