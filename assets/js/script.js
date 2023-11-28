@@ -22,3 +22,6 @@ $(function () {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+
+var currentDay = dayjs('2023-12-23');
+$('#currentDay').text(currentDay.format('dddd, MMMM DD'));
