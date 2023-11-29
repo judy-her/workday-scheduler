@@ -15,74 +15,74 @@ $(function () {
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
+  // TODO: Add code to display the current date in the header of the page.
+  var currentDay = dayjs();
+  $('#currentDay').text(currentDay.format('dddd, MMMM DD, YYYY hh:mm a'));
+
+  var hour = dayjs();
+  $('#currentHour').text(hour.hour()); //hour method gets current hour
+  var hourNow = hour.hour();
+  console.log(hourNow); //this gives me hour as number yay!
+
+  var timeBlocks = document.querySelectorAll('.time-block');
+
+  // Iterate over each element
+  timeBlocks.forEach(function (element) {
+    // Get the id attribute of the current element
+    var idAttribute = element.id;
+
+    // Use a regular expression to match and extract numbers
+    var numbers = idAttribute.match(/\d+/);
+
+    // Check if numbers were found
+    if (numbers) {
+      // Convert the matched string to a number
+      var extractedNumber = parseInt(numbers[0]);
+
+      // Use the extracted number as needed
+      console.log(extractedNumber);
+      console.log('this is the hour now' + hourNow);
+      // Add class based on the condition
+      if (extractedNumber > hourNow) {
+        element.classList.add('future');
+      } else if (extractedNumber < hourNow) {
+        element.classList.add('past');
+      } else if (extractedNumber === hourNow) element.classList.add('present');
+    }
+  });
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   //
-  // TODO: Add code to display the current date in the header of the page.
 });
 
-var currentDay = dayjs();
-$('#currentDay').text(currentDay.format('dddd, MMMM DD, YYYY hh:mm a'));
-
-var hour = dayjs();
-var currentHour = $('#currentHour').text(hour.hour()); //hour method gets current hour
-var hourNow = hour.hour();
-console.log(hourNow); //this gives me hour as number yay!
-
-var scheduledHour = $('.time-block');
-
-// Assuming your id attribute is something like "hour-13"
-// var idAttribute = 'hour-13';
-
-// // Use a regular expression to match and extract numbers
-// var numbers = idAttribute.match(/\d+/);
-
-// // Check if numbers were found
-// if (numbers) {
-//   // Convert the matched string to a number
-//   var extractedNumber = parseInt(numbers[0]);
-//   console.log(extractedNumber);
-// } else {
-//   console.log('No numbers found in the id attribute');
-// }
-
-// if (extractedNumber > hourNow) {
-//   $('.time-block').addClass('future');
-// } else if (extractedNumber < hourNow) {
-//   $('.time-block').addClass('past');
-// } else if (extractedNumber === hourNow) {
-//   $('.time-block').addClass('present');
-// }
-
+//NOTE original timeblocks ----------------------------------------
 // Get all elements with class "time-block"
-var timeBlocks = document.querySelectorAll('.time-block');
-// var timeBlocks = $('.time-block');
+// var timeBlocks = document.querySelectorAll('.time-block');
+// // var timeBlocks = $('.time-block');
 
-// Iterate over each element
-timeBlocks.forEach(function (element) {
-  // Get the id attribute of the current element
-  var idAttribute = element.id;
+// // Iterate over each element
+// timeBlocks.forEach(function (element) {
+//   // Get the id attribute of the current element
+//   var idAttribute = element.id;
 
-  // Use a regular expression to match and extract numbers
-  var numbers = idAttribute.match(/\d+/);
+//   // Use a regular expression to match and extract numbers
+//   var numbers = idAttribute.match(/\d+/);
 
-  // Check if numbers were found
-  if (numbers) {
-    // Convert the matched string to a number
-    var extractedNumber = parseInt(numbers[0]);
+//   // Check if numbers were found
+//   if (numbers) {
+//     // Convert the matched string to a number
+//     var extractedNumber = parseInt(numbers[0]);
 
-    // Use the extracted number as needed
-    console.log(extractedNumber);
-    console.log('this is the hour now' + hourNow);
-    // Example: Add a class based on the condition
-    if (extractedNumber > hourNow) {
-      element.classList.add('future');
-    } else if (extractedNumber < hourNow) {
-      element.classList.add('past');
-    } else if (extractedNumber === hourNow) {
-      element.classList.add('present');
-    }
-  }
-});
+//     // Use the extracted number as needed
+//     console.log(extractedNumber);
+//     console.log('this is the hour now' + hourNow);
+//     // Example: Add a class based on the condition
+//     if (extractedNumber > hourNow) {
+//       element.classList.add('future');
+//     } else if (extractedNumber < hourNow) {
+//       element.classList.add('past');
+//     } else if (extractedNumber === hourNow) element.classList.add('present');
+//   }
+// });
