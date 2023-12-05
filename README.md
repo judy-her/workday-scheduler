@@ -13,7 +13,7 @@ N/A
 ## Usage
 
 To get started choose the hour in which you want to add an item. The current day appears at the header along with the current hour with seconds included for the conveniene of the user. Once you type an item that needs to be saved, click the save icon next to the hour block and the item will be saved. If you want to change an item simply delete by clicking and deleting with backspace or delete key. You will see current hour being displayed in red for every current hour. Once the hour has passed the block will turn grey. For items in future, these will be green.
-Here is the link for full access
+Here is the link for full access https://judy-her.github.io/workday-scheduler/
 
 ![Work-Day-Scheduler](assets/images/Screenshot-scheduler.png)
 
