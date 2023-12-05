@@ -1,4 +1,3 @@
-console.log('I am connected :)');
 var headerEl = $('#currentDay');
 
 $(function () {
