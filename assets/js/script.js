@@ -4,6 +4,7 @@ var headerEl = $('#currentDay');
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
+  getLocalStorage();
   // TODO: 1- Add a listener for click events on the save button.
   //   2-Local Storage- This code should use the id in the containing time-block as a key to save the user input in local storage. HINT: What does `this` reference in the click listener function? How can DOM traversal be used to get the "hour-x" id of the time-block containing the button that was clicked? How might the id be useful when saving the description in local storage?
   $('.saveBtn').on('click', setLocalStorage);
@@ -54,12 +55,16 @@ $(function () {
       } else if (extractedNumber === hourNow) element.classList.add('present');
     }
   });
+  //fix getLocalStorage to use unique id of each time block
+  //got help from UC Berkley AI for using 'this' in local storage
   function getLocalStorage() {
-    const textAreaEl = document.querySelector('textarea');
-    const currentText = localStorage.getItem('description');
-    document.querySelector('.description').value = currentText;
-    textAreaEl.textContent = currentText;
+    $('.time-block').each(function () {
+      const timeBlockId = $(this).attr('id');
+      const storedDescription = localStorage.getItem(timeBlockId);
+      $(this).find('.description').val(storedDescription);
+    });
   }
+
   function setLocalStorage() {
     const timeBlockId = $(this).closest('.time-block').attr('id');
     const description = $(this).siblings('.description').val();
